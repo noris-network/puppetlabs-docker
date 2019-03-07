@@ -395,6 +395,7 @@ docker::run { 'helloworld':
   privileged       => false,
   pull_on_start    => false,
   before_stop      => 'echo "So Long, and Thanks for All the Fish"',
+  after_stop       => 'echo "Ok, so I can now clean your desk"',
   before_start     => 'echo "Run this on the host before starting the Docker container"',
   after            => [ 'container_b', 'mysql' ],
   depends          => [ 'container_a', 'postgres' ],
@@ -411,6 +412,8 @@ To pull the image before it starts, specify the `pull_on_start` parameter.
 Use the `detach` param to run container a container without the `-a` flag. This is only required on systems without `systemd`. This default is set in the params.pp based on the OS. Only override if you understand the consuquences and have a specific use case.
 
 To execute a command before the container stops, specify the `before_stop` parameter.
+
+To execute a command after the container stops, specify the `after_stop` parameter.
 
 Adding the container name to the `after` parameter to specify which containers start first, affects the generation of the `init.d/systemd` script.
 

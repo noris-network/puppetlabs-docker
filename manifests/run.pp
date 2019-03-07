@@ -124,6 +124,7 @@ define docker::run(
   Optional[String] $restart                             = undef,
   Variant[String,Boolean] $before_start                 = false,
   Variant[String,Boolean] $before_stop                  = false,
+  Variant[String,Boolean] $after_stop                   = false,
   Optional[String]  $after_create                       = undef,
   Optional[Boolean] $remove_container_on_start          = true,
   Optional[Boolean] $remove_container_on_stop           = true,
