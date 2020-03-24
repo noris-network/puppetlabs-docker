@@ -129,6 +129,7 @@
 #                Writes log messages to Splunk (HTTP Event Collector).
 #     awslogs  : AWS Cloudwatch Logs logging driver for Docker.
 #                Write log messages to Cloudwatch API
+#     local    : writes local
 #
 # [*log_opt*]
 #   Set the log driver specific options
@@ -535,8 +536,8 @@ class docker(
         fail(translate('log_driver must be one of none, json-file, syslog, gelf, fluentd, splunk, awslogs or etwlogs'))
       }
     } else {
-      assert_type(Pattern[/^(none|json-file|syslog|journald|gelf|fluentd|splunk|awslogs)$/], $log_driver) |$a, $b| {
-        fail(translate('log_driver must be one of none, json-file, syslog, journald, gelf, fluentd, splunk or awslogs'))
+      assert_type(Pattern[/^(none|json-file|syslog|journald|gelf|fluentd|splunk|awslogs|local)$/], $log_driver) |$a, $b| {
+        fail(translate('log_driver must be one of none, json-file, syslog, journald, gelf, fluentd, splunk, awslogs or local'))
       }
     }
   }
